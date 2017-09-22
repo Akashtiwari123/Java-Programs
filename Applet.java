@@ -12,3 +12,10 @@ g.setColor(Color.BLUE);
 g.fillArc(120,130,22,10,20,30);
 }
 } 
+/*
+<html>
+<body >
+<applet code=first.java width=400 height=300 ></applet>
+</body>
+</html>
+*/
