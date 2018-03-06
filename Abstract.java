@@ -1,13 +1,16 @@
 
 //abstract class cannot be instantiated
+
 abstract class A{
-
-public void m1();
-
+ int x;
+abstract void m1();
+ public void m2() {
+	 System.out.println("This method need not to override");
+ }
 }
 
-abstract class B extends A{    //if this class solves for the m1() then its ok else this class also has to  mark as abstract
-public void m2(){
+ class B extends A{ //if this class doesn't implement the inherited abstract method then it has to mark itself as abstract class.
+public void m3(){
 System.out.println("B");
  }
 }
@@ -18,10 +21,8 @@ System.out.println("A");
  }
 }
 
-
-class main{
-public static void main(String args[]) {
-
-C c =new ();
+public class App1 {
+ public static void main(String args[]) {
+	 C c =new C();
+	 
  }
-}
