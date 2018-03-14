@@ -9,7 +9,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 public class AdminScreenMain extends JFrame{
 
@@ -26,6 +29,7 @@ public class AdminScreenMain extends JFrame{
 	private JMenu mnReports;
 	private JMenuItem mntmNewMenuItem ;
 	private JMenuItem mntmNewMenuItem_1;
+	private JTable table;
 
 	
 	public AdminScreenMain() {
@@ -75,6 +79,27 @@ public class AdminScreenMain extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+        contentPane.setLayout(null);
+		
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 476, 214);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null,null,null,null},
+			},
+			new String[] {
+				"New column", "New column", "New column", "New column"
+			}
+		));
+		table.setBounds(10, 11, 476, 214);
+		contentPane.add(table);
+		
 	}
 	
 	
