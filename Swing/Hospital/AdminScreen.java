@@ -81,7 +81,7 @@ public class AdminScreenMain extends JFrame{
 		setContentPane(contentPane);
         contentPane.setLayout(null);
 		
-		
+		//adding a table
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 476, 214);
 		contentPane.add(scrollPane);
