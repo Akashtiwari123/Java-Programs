@@ -3,6 +3,8 @@ package com.main;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -13,6 +15,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import com.model.Account;
+
+import net.proteanit.sql.DbUtils;
 
 public class AdminScreenMain extends JFrame{
 
@@ -40,7 +46,7 @@ public class AdminScreenMain extends JFrame{
 	private void addcomponents() {
 	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 800, 400);
 		setVisible(true);
 		setTitle("Admin");
 		menuBar = new JMenuBar();
@@ -72,6 +78,17 @@ public class AdminScreenMain extends JFrame{
 		
 		mntmNewMenuItem = new JMenuItem("Today's Appointment");
 		mnReports.add(mntmNewMenuItem);
+		mntmNewMenuItem.addActionListener(a->{
+			try {
+				fetchPatient();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 		
 		mntmNewMenuItem_1 = new JMenuItem("Tomorrow's Appointment");
 		mnReports.add(mntmNewMenuItem_1);
@@ -81,12 +98,15 @@ public class AdminScreenMain extends JFrame{
 		setContentPane(contentPane);
         contentPane.setLayout(null);
 		
-		//adding a table
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 476, 214);
-		contentPane.add(scrollPane);
 		
-		table = new JTable();
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 750, 300);
+		contentPane.add(scrollPane);
+	
+
+	
+		
+		 table = new JTable();
 		scrollPane.setViewportView(table);
 		
 		table.setModel(new DefaultTableModel(
@@ -97,9 +117,16 @@ public class AdminScreenMain extends JFrame{
 				"New column", "New column", "New column", "New column"
 			}
 		));
-		table.setBounds(10, 11, 476, 214);
-		contentPane.add(table);
 		
+		
+		
+	}
+
+	private void fetchPatient() throws ClassNotFoundException, SQLException {
+	   
+		Account ac=new Account();
+		ResultSet rst=ac.fetchpatient();
+		  table.setModel(DbUtils.resultSetToTableModel(rst));
 	}
 	
 	
