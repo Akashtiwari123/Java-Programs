@@ -36,6 +36,7 @@ public class AdminScreenMain extends JFrame{
 	private JMenuItem mntmNewMenuItem ;
 	private JMenuItem mntmNewMenuItem_1;
 	private JTable table;
+	private JScrollPane scrollPane;
 
 	
 	public AdminScreenMain() {
@@ -69,9 +70,24 @@ public class AdminScreenMain extends JFrame{
 		 });
 		 mntmCancelAppointment = new JMenuItem("Cancel Appointment");
 		mnFiles.add(mntmCancelAppointment);
+		mntmCancelAppointment.addActionListener(a->{
+			 CancelApptMain cam=new  CancelApptMain();
+			 cam=null;
+		});
 		
 		 mntmSearchPatientInfo = new JMenuItem("Search Patient Info");
 		mnFiles.add(mntmSearchPatientInfo);
+		mntmSearchPatientInfo.addActionListener(a->{
+			try {
+				searchpatientInfo();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		
 		 mnReports = new JMenu("Reports");
 		menuBar.add(mnReports);
@@ -92,6 +108,20 @@ public class AdminScreenMain extends JFrame{
 		
 		mntmNewMenuItem_1 = new JMenuItem("Tomorrow's Appointment");
 		mnReports.add(mntmNewMenuItem_1);
+		mntmNewMenuItem_1.addActionListener(a->{
+			try {
+				fetchpatientTomorrow();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+		
+		
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -99,14 +129,15 @@ public class AdminScreenMain extends JFrame{
         contentPane.setLayout(null);
 		
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 750, 300);
 		contentPane.add(scrollPane);
 	
 
 	
-		
+		scrollPane.setVisible(false);
 		 table = new JTable();
+	
 		scrollPane.setViewportView(table);
 		
 		table.setModel(new DefaultTableModel(
@@ -122,12 +153,30 @@ public class AdminScreenMain extends JFrame{
 		
 	}
 
+
+	private void searchpatientInfo() throws ClassNotFoundException, SQLException {
+		Account ac=new Account();
+		ResultSet rst=ac.searchpatientInfo();
+		scrollPane.setVisible(true);
+		table.setModel(DbUtils.resultSetToTableModel(rst));
+	}
+
+
 	private void fetchPatient() throws ClassNotFoundException, SQLException {
 	   
 		Account ac=new Account();
 		ResultSet rst=ac.fetchpatient();
+		scrollPane.setVisible(true);
 		  table.setModel(DbUtils.resultSetToTableModel(rst));
 	}
 	
-	
+
+	private void fetchpatientTomorrow() throws ClassNotFoundException, SQLException {
+		 
+		Account ac=new Account();
+		ResultSet rst=ac.fetchpatientTomorrow();
+		scrollPane.setVisible(true);
+		  table.setModel(DbUtils.resultSetToTableModel(rst));
+		
+	}
 }
