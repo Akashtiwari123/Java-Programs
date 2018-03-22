@@ -1,21 +1,25 @@
 package com.main;
+
 /*
 @author:Akash Tiwari
 */
+
 import java.util.Scanner;
 
 import com.pro.A;
 import com.pro.B;
 
 public class Customer {
-  A a=new A();
+ 
 	private String name;
-	private int balance;
+	private double balance;
+	private double amount;
 	B b=new B();
-	public Customer(String name, int balance) {
+	 A a=new A();
+	public Customer(String name, double d) {
 		super();
 		this.name = name;
-		this.balance = balance;
+		this.balance = d;
 	}
 	public String getName() {
 		return name;
@@ -23,23 +27,28 @@ public class Customer {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getBalance() {
+	public double getBalance() {
 		return balance;
 	}
-	public void setBalance(int balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 	
   void deposit() {
 	  System.out.println("Enter the amount to deposit");
 	  Scanner sc=new Scanner(System.in);
-			  int amount=sc.nextInt();
-			  a.deposit( amount);
+			  this.amount=sc.nextInt();
+		//	  setBalance(this.balance=this.balance+amount);
+			  a.update();
+			  sc.close();
+			 
+			
   }
   void withdraw() {
 	  System.out.println("Enter the amount to withdraw");
 	  Scanner sc=new Scanner(System.in);
-			  int amount=sc.nextInt();
-			 b.withdraw(amount);
+			  this.amount=sc.nextInt();
+			B b=new B();
+			  sc.close();
   }
 }
