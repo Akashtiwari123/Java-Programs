@@ -2,18 +2,25 @@ package com.pro;
 /*
 @author:Akash Tiwari
 */
+
 import com.main.Customer;
 import com.main.Deposit;
 
 public class A implements Deposit{
-	int balance;
+	double balance;
 	double amount;
+	
 	
 	@Override
 	public void deposit(Customer c, double amount) {
 		System.out.println(c.getBalance());
-		System.out.println(amount);
-		c.setBalance(balance=(int) (c.getBalance()+amount));
+		this.balance=c.getBalance();
+		this.amount=amount;
+		
+		c.setBalance(update());
 	}
-	
+	public double update() {
+	this.balance=this.balance+amount;
+	return balance;
+	}
 }
