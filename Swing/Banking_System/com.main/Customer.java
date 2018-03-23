@@ -38,7 +38,7 @@ public class Customer {
 	  System.out.println("Enter the amount to deposit");
 	  Scanner sc=new Scanner(System.in);
 			  this.amount=sc.nextInt();
-		//	  setBalance(this.balance=this.balance+amount);
+		          balance=balance+amount;
 			  a.update();
 			  sc.close();
 			 
