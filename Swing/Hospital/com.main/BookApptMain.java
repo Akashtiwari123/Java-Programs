@@ -61,7 +61,9 @@ public class BookApptMain extends JFrame{
 		
 		JButton btn2=new JButton("OK");
 		jd=new JDialog(this,"Appointment Confirm",true);
-		jd.setSize(300,200);/*
+		jd.setSize(300,200);
+		JLabel lb=new JLabel("Appointment Booked Successfully !!");
+		jd.add(lb);/*
 		btn2.setBounds(50,50, 20, 20);
 		jd.add(btn2);
 		btn2.addActionListener(new ActionListener() {
