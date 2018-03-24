@@ -38,7 +38,7 @@ public class Customer {
 	  System.out.println("Enter the amount to deposit");
 	  Scanner sc=new Scanner(System.in);
 			  this.amount=sc.nextInt();
-		          balance=balance+amount;
+		       //balance=balance+amount;
 			  a.update();
 			  sc.close();
 			 
@@ -48,6 +48,7 @@ public class Customer {
 	  System.out.println("Enter the amount to withdraw");
 	  Scanner sc=new Scanner(System.in);
 			  this.amount=sc.nextInt();
+	        // balance=balance+amount;
 			B b=new B();
 			  sc.close();
   }
