@@ -16,6 +16,7 @@ public class App {
 Customer c=new Customer("Akash",5000.00);
 System.out.println("The initial balance is :"+c.getBalance());
   A a=new A();
+  System.out.print("Enter the amount :");
   Scanner sc=new Scanner(System.in);
   int amount=sc.nextInt();
   a.deposit(c, amount);
