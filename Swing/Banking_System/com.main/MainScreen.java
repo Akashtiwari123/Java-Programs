@@ -1,7 +1,7 @@
 package com.main;
 
 import java.awt.BorderLayout;
-
+import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,7 +10,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainScreen extends JFrame {
 
@@ -64,4 +65,26 @@ public class MainScreen extends JFrame {
 		
 		 
 		 JButton btnProcess = new JButton("Process");
+		btnProcess.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				name=txtname.getText().toString();
+				 balance=Double.parseDouble(txtbalance.getText().toString());
+				 
+				 Customer c=new Customer(name,balance);
+				 OpScreen op=new OpScreen(c);
+
+				 op=null;
+				 
+			}
+		});
+		btnProcess.setFont(new Font("Verdana", Font.PLAIN, 14));
+		btnProcess.setBounds(139, 199, 99, 27);
+		contentPane.add(btnProcess);
 		
+		
+	}
+
+	
+	
+}
