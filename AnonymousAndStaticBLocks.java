@@ -15,8 +15,13 @@ public class App {
 
 	public static void main(String[] args) {
 		  A a=new A();
-		  
+		  new A();
 
 	}
-
+/*
+Output:
+Thanks!
+Welcome
+Welcome
+*/
 }
