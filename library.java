@@ -14,12 +14,12 @@ public class Library {
 public class Book
 {
 String bk_name;
-float price;
-char author;
+double price;
+String author;
 String availability;
-Scanner s= new Scanner(System.in);
-public Book(){}
-Book(String bkn,float p,char author,String availability)
+
+
+Book(String bkn,double p,String author,String availability)
 {
 bk_name=bkn;
 price=p;
@@ -31,6 +31,7 @@ void librarian(){
 
 int it,rt,fine,n;
 System.out.println("Enter the issue _date and return_date");
+Scanner s= new Scanner(System.in);
 it=s.nextInt();
 rt=s.nextInt();
 n=it-rt;
@@ -51,7 +52,7 @@ name=s.next();
 sclass=s.next();
 roll=s.nextInt();
 List<String> list = new ArrayList<>();
-list.add(new Book("oopm","samira",200,"YES"));
+list.add(new Book("oopm","Herbert",200,"YES"));
 list.add(new Book("dbms","TECHMAX",300,"YES"));
 list.add(new Book("dsa","TACHMAX",150,"YES"));
 list.add(new Book("adc","TECHMAX",400,"YES"));
