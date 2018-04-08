@@ -10,7 +10,7 @@ public class Library {
     }
     
 }                                              
-
+//Book Details
 public class Book
 {
 String bk_name;
@@ -26,7 +26,7 @@ price=p;
 this.author=author;
 this.availability=availability;
 }
-
+//Librarian Log
 void librarian(){
 
 int it,rt,fine,n;
