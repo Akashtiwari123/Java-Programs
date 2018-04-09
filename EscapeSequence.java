@@ -1,6 +1,6 @@
-/*Write a program to demonstrate the use of escape characters / sequences and println
+/* Use of escape characters / sequences and println
 statements.
-SOURCE CODE:*/
+*/
 import java.io.*;
 public class App
 {
