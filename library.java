@@ -40,7 +40,7 @@ if(n>7)
   System.out.println("The amount as fine is:"+fine);
 }
 else 
-    System.out.println("NO Fine");
+    System.out.println("No Fine");
 }
  
 void student()
